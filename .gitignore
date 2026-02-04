@@ -7,6 +7,8 @@ venv/
 .DS_Store
 .ipynb_checkpoints/
 output/
+data/raw/telemetry.csv
+data/processed/anomaly_scores.png
 data/processed/
 models/
 *.egg-info/
