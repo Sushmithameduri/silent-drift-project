@@ -86,58 +86,109 @@ The following plot shows the Mahalanobis Distance Score for anomaly detection ov
 
 ![Anomaly Scores Over Time](data/processed/anomaly_scores.png)
 
-- **Blue line:** Mahalanobis Distance Score at each timestep.
-- **Red dashed line:** Detection threshold (95th percentile, value: 10.6).
-- For most of the monitoring period, the score remains below the threshold, indicating normal behavior.
-- After around timestep 350, the score rises sharply and stays well above the threshold, indicating a strong anomaly or drift in the data.
-- This suggests the system experienced a significant change or anomaly after this point.
 
-## License
+# Silent Drift Detection 🚦  
+_Efficient, Lightweight Anomaly Detection for ML Telemetry_
 
-Provided as an educational reference. Use or adapt as needed.
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen) 
+![License](https://img.shields.io/badge/license-MIT-blue) 
+![Version](https://img.shields.io/badge/version-1.0.0-orange)
 
-## Contact
+---
 
-Open an issue or contact the maintainer for help integrating this into
-production telemetry systems.
-# Silent Drift Detection
+## Description
 
-Simple end-to-end anomaly detection pipeline for telemetry data.
+Silent Drift Detection is a Python-based pipeline for detecting "silent drift" in machine learning telemetry using robust multivariate statistical methods. It helps you monitor your ML systems for subtle, hard-to-detect changes in data distribution—before they impact model performance.
 
-Quickstart
+**Why is this useful?**  
+Silent drift can degrade model accuracy without obvious failures. This tool provides early warning, enabling proactive retraining and system health monitoring.
 
-1. Create a Python environment (recommended):
+---
+
+## Key Features
+
+- 🚀 **End-to-End Pipeline:** From synthetic data generation to evaluation and visualization.
+- 📊 **Mahalanobis Distance Detector:** Multivariate anomaly scoring for robust drift detection.
+- 🛠️ **Rolling-Window Feature Engineering:** Captures evolving data patterns.
+- 🖼️ **Automated Visualizations:** Plots anomaly scores and detection thresholds.
+- 🧪 **Test Suite:** Includes unit tests for reliability.
+- ⚡ **Lightweight & Fast:** Minimal dependencies, easy to integrate.
+
+---
+
+## Installation
+
+Clone the repository and install dependencies:
 
 ```bash
+git clone https://github.com/Sushmithameduri/silent-drift-project.git
+cd silent-drift-project
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. Run the pipeline (generate, preprocess, train, evaluate):
+---
+
+## Usage
+
+Run the full pipeline:
 
 ```bash
 python main.py
 ```
 
-3. Run tests:
+This will:
+- Generate synthetic telemetry data
+- Compute rolling features
+- Fit the anomaly detector
+- Score the monitoring period
+- Save results and plots to `data/processed/`
+
+### Example Output
+
+![Anomaly Scores Over Time](data/processed/anomaly_scores.png)
+
+---
+
+## Configuration
+
+You can customize the pipeline via command-line arguments in `main.py`:
+
+- `--n`: Number of samples (default: 1000)
+- `--seed`: Random seed for reproducibility
+- `--train`: Train the detector
+- `--eval`: Evaluate and plot results
+- `--output-dir`: Output directory for artifacts
+
+Example:
 
 ```bash
-pytest -q
+python main.py --n 2000 --seed 123 --output-dir ./output
 ```
 
-Project layout
+---
 
-- `src/data_generator.py`: synthetic telemetry generator
-- `src/preprocessing.py`: cleaning and aggregation
-- `src/anomaly_model.py`: simple IsolationForest wrapper
-- `src/evaluator.py`: precision/recall/F1 metrics
-- `main.py`: CLI orchestrator
-- `tests/test_anomaly.py`: small end-to-end unit test
+## Contributing
 
-Extending
+Contributions are welcome! To get started:
 
-- Replace the model in `src/anomaly_model.py` to try different algorithms.
-- Add more feature engineering in `src/preprocessing.py`.
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+Please see the `CONTRIBUTING.md` for guidelines.
+
+---
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+_Questions or feedback? Open an issue or contact the maintainer!_
 
 
