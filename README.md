@@ -117,7 +117,7 @@ pip install -r requirements.txt
 2. Run the pipeline (generate, preprocess, train, evaluate):
 
 ```bash
-python main.py --n 1000 --seed 42 --train --eval --output-dir ./output
+python main.py
 ```
 
 3. Run tests:
