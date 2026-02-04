@@ -77,6 +77,21 @@ pytest -q
 - Add feature engineering under `src/preprocessing.py`.
 - Try different detectors in `src/anomaly_model.py` and compare results.
 
+
+## Results
+
+### Anomaly Detection Output
+
+The following plot shows the Mahalanobis Distance Score for anomaly detection over time:
+
+![Anomaly Scores Over Time](data/processed/anomaly_scores.png)
+
+- **Blue line:** Mahalanobis Distance Score at each timestep.
+- **Red dashed line:** Detection threshold (95th percentile, value: 10.6).
+- For most of the monitoring period, the score remains below the threshold, indicating normal behavior.
+- After around timestep 350, the score rises sharply and stays well above the threshold, indicating a strong anomaly or drift in the data.
+- This suggests the system experienced a significant change or anomaly after this point.
+
 ## License
 
 Provided as an educational reference. Use or adapt as needed.
